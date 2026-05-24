@@ -144,7 +144,12 @@ h1 { font-size: clamp(32px, 3vw, 44px); line-height: 1; letter-spacing: 0; }
 .split-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
 .split-title button { padding: 0 16px; min-height: 42px; }
 .history-list { display: grid; gap: 12px; }
-.empty-state, .about-copy { color: var(--muted); line-height: 1.7; }
+.empty-state, .about-copy { color: var(--muted); line-height: 1.7; font-size: 15px; }
+/* About panel tweaks: consistent gaps, text sizing, and bullet color */
+.page-panel h3 { margin-top: 18px; margin-bottom: 8px; font-size: 16px; color: var(--text); }
+.about-list { margin: 8px 0 18px; padding-left: 22px; color: var(--muted); }
+.about-list li { margin: 6px 0; color: var(--muted); }
+.about-copy.note { font-weight: 700; color: var(--text); margin-top: 8px; }
 .settings-list { display: grid; gap: 14px; max-width: 620px; }
 .settings-list label { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 58px; padding: 0 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-soft); font-weight: 800; }
 .settings-list select { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); }

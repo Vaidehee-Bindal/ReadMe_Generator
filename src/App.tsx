@@ -46,7 +46,7 @@ const templates: Array<{ id: TemplateId; name: string; detail: string }> = [
 
 function App() {
   const GITHUB_SCAN_COOLDOWN_MS = 5000;
-  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem("readme-theme") as Theme) || "light");
+  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem("readme-theme") as Theme) || "dark");
   const [view, setView] = useState<View>("dashboard");
   const [source, setSource] = useState<SourceType>("local");
   const [githubUrl, setGithubUrl] = useState("");
@@ -228,9 +228,9 @@ function App() {
           </div>
           <div className="top-actions">
             <button className="icon-button" type="button" onClick={() => setTheme(theme === "light" ? "dark" : "light")} aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}>
-              {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
+              {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
             </button>
-            <a className="github-button" href="https://github.com" target="_blank" rel="noreferrer"><Github size={19} /> Star on GitHub</a>
+            <a className="github-button" href="https://github.com/Vaidehee-Bindal/ReadMe_Generator" target="_blank" rel="noreferrer"><Github size={19} /> Star on GitHub</a>
           </div>
         </header>
 
@@ -375,7 +375,29 @@ function HistoryPanel({ entries, onRestore, onClear }: { entries: HistoryEntry[]
 }
 
 function AboutPanel() {
-  return <section className="panel page-panel"><PanelTitle title="About" detail="A privacy-first README generator for developers." /><p className="about-copy">This tool reads local project files in your browser or fetches metadata from public GitHub repositories. It analyzes the project structure locally, then generates a polished README with heuristic rules based on dependencies, scripts, and detected features.</p></section>;
+  return (
+    <section className="panel page-panel">
+      <PanelTitle title="About" detail="A privacy-first README generator for developers." />
+      <p className="about-copy">This tool reads local project files in your browser or fetches metadata from public GitHub repositories. It analyzes the project structure locally, then generates a polished README with heuristic rules based on dependencies, scripts, and detected features.</p>
+
+      <h3>Why this is different</h3>
+      <p className="about-copy">Many README generators require you to fill the same fields manually. This generator minimizes manual input by using repository metadata and folder structure to infer meaningful sections automatically — it detects packages, scripts, entry points, tech stack, and likely demos so the README is tailored to your project.</p>
+
+      <h3>Features</h3>
+      <ul className="about-list">
+        <li>Automatic tech stack and dependency detection from package files and imports.</li>
+        <li>Extraction of install, run, build, and test commands when available.</li>
+        <li>Optional Live Demo and Video Demo link support for clearer examples.</li>
+        <li>Multiple templates to control verbosity and section inclusion.</li>
+        <li>Local-first analysis that keeps your files private when scanning locally.</li>
+      </ul>
+
+      <h3>Security & Privacy</h3>
+      <p className="about-copy">When scanning local folders the analysis runs entirely in your browser and no files are uploaded. Public GitHub scans only fetch publicly available repository metadata and files. The app includes network timeouts and scan cooldowns to reduce abusive requests.</p>
+
+      <p className="about-copy note">NOTE: Kindly check the readme and modify it as per your need because it can make mistakes.</p>
+    </section>
+  );
 }
 
 function FullscreenPreview({ markdown, onClose }: { markdown: string; onClose: () => void }) {

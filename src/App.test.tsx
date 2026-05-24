@@ -9,8 +9,11 @@ describe("App", () => {
     render(<App />);
 
     expect(screen.getByRole("heading", { name: /generate readme/i })).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: /switch to dark mode/i }));
-    expect(document.documentElement.dataset.theme).toBe("dark");
+    const toggle = screen.getByRole("button", { name: /switch to (dark|light) mode/i });
+    const before = document.documentElement.dataset.theme;
+    await user.click(toggle);
+    const after = document.documentElement.dataset.theme;
+    expect(after).toBe(before === "dark" ? "light" : "dark");
   });
 
   it("shows optional link fields", () => {
