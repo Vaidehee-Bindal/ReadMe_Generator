@@ -8,7 +8,7 @@
     <script>
       (function () {
         try {
-          var theme = localStorage.getItem("readme-theme");
+          var theme = localStorage.getItem("readme-theme-v2");
           document.documentElement.dataset.theme = theme === "light" || theme === "dark" ? theme : "dark";
         } catch (error) {
           document.documentElement.dataset.theme = "dark";

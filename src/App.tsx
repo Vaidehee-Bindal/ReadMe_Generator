@@ -44,9 +44,11 @@ const templates: Array<{ id: TemplateId; name: string; detail: string }> = [
   { id: "opensource", name: "Open Source", detail: "Includes contribution, support, and community-friendly sections." }
 ];
 
+const THEME_STORAGE_KEY = "readme-theme-v2";
+
 function App() {
   const GITHUB_SCAN_COOLDOWN_MS = 5000;
-  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem("readme-theme") as Theme) || "dark");
+  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem(THEME_STORAGE_KEY) as Theme) || "dark");
   const [view, setView] = useState<View>("dashboard");
   const [source, setSource] = useState<SourceType>("local");
   const [githubUrl, setGithubUrl] = useState("");
@@ -72,7 +74,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem("readme-theme", theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
 
   useEffect(() => {
