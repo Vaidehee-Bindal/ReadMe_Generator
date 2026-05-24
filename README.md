@@ -4,6 +4,9 @@ A smart and developer-focused README generator that automatically creates profes
 
 Designed as a free developer productivity tool, this project eliminates the need to manually write repetitive documentation while maintaining structured, high-quality, and visually clean READMEs.
 
+# Live Demo
+Try it here - https://github-readme-generator.vercel.app/
+
 # Features
 
 ## Core Functionalities
